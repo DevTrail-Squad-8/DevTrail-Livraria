@@ -35,9 +35,6 @@ public class Impresso extends Livro {
 
     @Override
     public String toString() {
-        return "Impresso{" +
-                "frete=" + frete +
-                ", estoque=" + estoque +
-                '}';
+        return super.toString() + "\nFrete: " + frete + "\nEstoque: " + estoque;
     }
 }

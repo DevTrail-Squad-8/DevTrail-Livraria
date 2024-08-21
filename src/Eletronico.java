@@ -17,8 +17,6 @@ public class Eletronico extends Livro{
 
     @Override
     public String toString() {
-        return "Eletronico{" +
-                "tamanho=" + tamanho +
-                '}';
+        return super.toString() + "\nTamanho: " + tamanho + "KB";
     }
 }

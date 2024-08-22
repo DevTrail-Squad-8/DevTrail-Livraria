@@ -125,7 +125,7 @@ public class LivrariaVirtual {
         Venda venda = new Venda(qtdLivros, cliente);
 
         for(int i = 0; i < qtdLivros; i++) {
-            System.out.println("\n Escolha o tipo de livro:\n1 - Impresso\n2 - Elertônico.");
+            System.out.println("\n Escolha o tipo de livro:\n1 - Impresso\n2 - Eletrônico.");
             int tipo = sc.nextInt();
             sc.nextLine();
 
@@ -134,7 +134,7 @@ public class LivrariaVirtual {
             }
 
             if (tipo == 1) {
-                listarLivrosEletronicos();
+                listarLivrosImpressos();
                 System.out.println("Escolha o índice do livro impresso: ");
                 int indice = sc.nextInt();
                 sc.nextLine();
@@ -167,7 +167,7 @@ public class LivrariaVirtual {
 
     public void listarLivrosImpressos() {
         if (numImpressos == 0) {
-            System.out.println("\nNenhum livros impressos");
+            System.out.println("\nNenhum livro impressos");
         }else {
             System.out.print("\nLivros Impressos: \n");
             System.out.print("\n-------------------------------\n");
@@ -180,16 +180,14 @@ public class LivrariaVirtual {
     }
 
     public void listarLivrosEletronicos() {
-        if (numEletronicos == 0) {
-            System.out.println("\nNenhum livro eletrônico cadastrado.");
-        } else {
+
             System.out.println("\nLivros Eletrônicos: ");
             System.out.println("-------------------------------");
             for (int i = 0; i < numEletronicos; i++) {
                 System.out.println(i + ": " + eletronicos[i].toString());
                 System.out.println("-------------------------------");
             }
-        }
+        
     }
 
 

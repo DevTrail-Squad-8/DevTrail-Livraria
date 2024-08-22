@@ -3,7 +3,7 @@ public class Impresso extends Livro {
     private float frete;
     private int estoque;
 
-    public Impresso(String titulo, float frete, String autores, String editora, float preco, int estoque) {
+    public Impresso(String titulo, String autores, String editora, float preco, float frete, int estoque) {
         super(titulo, autores, editora, preco);
         this.frete = frete;
         this.estoque = estoque;

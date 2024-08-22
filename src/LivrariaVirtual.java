@@ -103,7 +103,66 @@ public class LivrariaVirtual {
     }
 
     public void realizarVenda() {
+        Scanner sc = new Scanner(System.in);
 
+        if (numVendas >= MAX_VENDAS) {
+            System.out.println("Limite de vendas atingido!");
+            return;
+        }
+
+        System.out.print("Digite o nome do cliente: ");
+        String cliente = sc.nextLine();
+
+        System.out.print("Digite a quantidade de livros que o cliente deseja comprar: ");
+        int qtdLivros = sc.nextInt();
+        sc.nextLine();
+
+        if (qtdLivros <= 0) {
+            System.out.println("Quantidade de livros inválida.");
+            return;
+        }
+
+        Venda venda = new Venda(qtdLivros, cliente);
+
+        for(int i = 0; i < qtdLivros; i++) {
+            System.out.println("\n Escolha o tipo de livro:\n1 - Impresso\n2 - Elertônico.");
+            int tipo = sc.nextInt();
+            sc.nextLine();
+
+            if (tipo != 1 && tipo != 2 && tipo != 3) {
+                System.out.println("Opção inválida.");
+            }
+
+            if (tipo == 1) {
+                listarLivrosEletronicos();
+                System.out.println("Escolha o índice do livro impresso: ");
+                int indice = sc.nextInt();
+                sc.nextLine();
+
+                if (indice >= 0 && indice < numImpressos) {
+                    venda.addLivro(impressos[indice], i);
+                    impressos[indice].atualizarEstoque();
+                }else {
+                    System.out.println("Índice inválido.");
+                }
+            }else if(tipo == 2){
+                listarLivrosEletronicos();
+                System.out.println("Escolha o índice do livro eletrônico: ");
+
+                int indice = sc.nextInt();
+                sc.nextLine();
+
+                if (indice >= 0 && indice < numEletronicos) {
+                    venda.addLivro(eletronicos[indice], i);
+                }else{
+                    System.out.println("Índice inválido");
+                }
+            }else{
+                System.out.println("Opção inválida.");
+            }
+        }
+        vendas[numVendas++] = venda;
+        System.out.println("Venda realizada com sucesso!");
     }
 
     public void listarLivrosImpressos() {
@@ -118,6 +177,14 @@ public class LivrariaVirtual {
     }
 
     private void listarVendas() {
+        if (numVendas == 0 ){
+            System.out.println("Nenhuma Venda feita");
+        }else{
+            for (int i = 0; i < numVendas; i++) {
+                vendas[i].listarLivros();
+                System.out.println("--------------------------------");
+            }
+        }
     }
 
     @Override

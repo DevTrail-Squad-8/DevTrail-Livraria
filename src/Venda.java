@@ -6,7 +6,7 @@ public class Venda {
     private float valor;
     private Livro[] livros;
 
-    public Venda(int tamanho, String cliente) {
+    public Venda(int tamanho, String cliente ) {
         this.livros = new Livro[tamanho];
         this.cliente = cliente;
         this.valor = 0;

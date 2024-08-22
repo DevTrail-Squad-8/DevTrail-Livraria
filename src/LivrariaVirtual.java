@@ -166,6 +166,17 @@ public class LivrariaVirtual {
     }
 
     public void listarLivrosImpressos() {
+        if (numImpressos == 0) {
+            System.out.println("\nNenhum livros impressos");
+        }else {
+            System.out.print("\nLivros Impressos: \n");
+            System.out.print("\n-------------------------------\n");
+
+            for (int i = 0; i < numImpressos; i++) {
+                System.out.println( impressos[i].toString());
+                System.out.println("-------------------------------");
+            }
+        }
 
     }
 
@@ -174,6 +185,7 @@ public class LivrariaVirtual {
     }
 
     private void listarLivros() {
+        listarLivrosImpressos();
     }
 
     private void listarVendas() {

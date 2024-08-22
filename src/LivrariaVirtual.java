@@ -180,8 +180,18 @@ public class LivrariaVirtual {
     }
 
     public void listarLivrosEletronicos() {
-
+        if (numEletronicos == 0) {
+            System.out.println("\nNenhum livro eletrônico cadastrado.");
+        } else {
+            System.out.println("\nLivros Eletrônicos: ");
+            System.out.println("-------------------------------");
+            for (int i = 0; i < numEletronicos; i++) {
+                System.out.println(i + ": " + eletronicos[i].toString());
+                System.out.println("-------------------------------");
+            }
+        }
     }
+
 
     private void listarLivros() {
         listarLivrosImpressos();
@@ -217,6 +227,16 @@ public class LivrariaVirtual {
         Scanner sc = new Scanner(System.in);
         int op;
 
+        System.out.println("       .--.                   .---.");
+        System.out.println("   .---|__|           .-.     |~~~|");
+        System.out.println(".--|===|--|_          |_|     |~~~|--.");
+        System.out.println("|  |===|  |'\\     .---!~|  .--|   |--|");
+        System.out.println("|%%|   |  |.'\\    |===| |--|%%|   |  |");
+        System.out.println("|%%|   |  |\\.'\\   |   | |__|  |   |  |");
+        System.out.println("|  |   |  | \\  \\  |===| |==|  |   |  |");
+        System.out.println("|  |   |__|  \\.'\\ |   |_|__|  |~~~|__|");
+        System.out.println("|  |===|--|   \\.'\\|===|~|--|%%|~~~|--|");
+        System.out.println("^--^---'--^    `-'`---^-^--^--^---'--'");
         do {
             System.out.println("\nMenu");
             System.out.println("1 - Cadastrar Livro: ");

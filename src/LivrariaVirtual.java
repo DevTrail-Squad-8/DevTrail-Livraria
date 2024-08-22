@@ -177,7 +177,6 @@ public class LivrariaVirtual {
                 System.out.println("-------------------------------");
             }
         }
-
     }
 
     public void listarLivrosEletronicos() {
@@ -186,6 +185,7 @@ public class LivrariaVirtual {
 
     private void listarLivros() {
         listarLivrosImpressos();
+        listarLivrosEletronicos();
     }
 
     private void listarVendas() {
@@ -193,8 +193,11 @@ public class LivrariaVirtual {
             System.out.println("Nenhuma Venda feita");
         }else{
             for (int i = 0; i < numVendas; i++) {
+                Venda Venda = vendas[i];
+                System.out.println("\n--------------------------------\n");
                 vendas[i].listarLivros();
-                System.out.println("--------------------------------");
+                System.out.println("Cliente: " + Venda.getCliente());
+                System.out.println("\n--------------------------------\n");
             }
         }
     }

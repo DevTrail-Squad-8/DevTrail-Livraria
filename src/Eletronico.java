@@ -1,5 +1,3 @@
-
-
 public class Eletronico extends Livro{
 
     private int tamanho;

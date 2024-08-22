@@ -1,10 +1,18 @@
 public class Venda {
 
     private static int numVendas = 0;
-    private int numero = numVendas;
+    private int numero;
     private String cliente;
     private float valor;
     private Livro[] livros;
+
+    public Venda(int tamanho, String cliente) {
+        this.livros = new Livro[tamanho];
+        this.cliente = cliente;
+        this.valor = 0;
+        numVendas++;
+        this.numero = numVendas;
+    }
 
     public int getNumVendas() {
         return numVendas;
@@ -39,25 +47,19 @@ public class Venda {
     }
 
     public void addLivro(Livro l, int index) {
-        if (index >= 0 && index < livros.length) {
+        if (index >= 0 && index < livros.length && livros[index] == null) {
             livros[index] = l;
             valor += l.getPreco();
+        } else {
+            System.out.println("Erro");
         }
     }
 
     public void listarLivros() {
+        System.out.println("Venda n° " + numero);
         for (Livro livro : livros) {
-            System.out.println(livro.toString());
+            if (livro != null) System.out.println(livro.toString());
         }
-    }
-
-    @Override
-    public String toString() {
-        return "Venda{" +
-                "numVendas=" + numVendas +
-                ", numero=" + numero +
-                ", cliente='" + cliente + '\'' +
-                ", valor=" + valor +
-                '}';
+        System.out.println("Valor total da venda: " + valor);
     }
 }

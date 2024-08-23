@@ -173,7 +173,7 @@ public class LivrariaVirtual {
             System.out.print("\n-------------------------------\n");
 
             for (int i = 0; i < numImpressos; i++) {
-                System.out.println( impressos[i].toString());
+                System.out.println((i)+ 1 + " - " + impressos[i].toString());
                 System.out.println("-------------------------------");
             }
         }

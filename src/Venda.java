@@ -6,7 +6,7 @@ public class Venda {
     private float valor;
     private Livro[] livros;
 
-    public Venda(int tamanho, String cliente ) {
+    public Venda(int tamanho, String cliente) {
         this.livros = new Livro[tamanho];
         this.cliente = cliente;
         this.valor = 0;
@@ -48,8 +48,17 @@ public class Venda {
 
     public void addLivro(Livro l, int index) {
         if (index >= 0 && index < livros.length && livros[index] == null) {
+            if (l instanceof Impresso impresso) {
+                if (impresso.getEstoque() <= 0) {
+                    System.out.println("Estoque do livro impresso esgotado!");
+                    return;
+                }
+                valor += impresso.getPreco() + impresso.getFrete();
+                impresso.atualizarEstoque();
+            } else {
+                valor += l.getPreco();
+            }
             livros[index] = l;
-            valor += l.getPreco();
         } else {
             System.out.println("Erro");
         }

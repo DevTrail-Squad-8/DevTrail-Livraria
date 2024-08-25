@@ -95,6 +95,7 @@ public class LivrariaVirtual {
                 float preco = sc.nextFloat();
                 System.out.print("Digite o tamanho do livro em KB: ");
                 int tamanho = sc.nextInt();
+                sc.nextLine();
 
                 Eletronico eletronico = new Eletronico(titulo, autor, editora, preco, tamanho);
                 eletronicos[numEletronicos++] = eletronico;
@@ -104,7 +105,7 @@ public class LivrariaVirtual {
     }
 
     public void realizarVenda() {
-        if (numVendas > MAX_VENDAS) {
+        if (numVendas >= MAX_VENDAS) {
             System.out.println("Limite de vendas atingido!");
             return;
         }
@@ -125,6 +126,8 @@ public class LivrariaVirtual {
         for (int i = 0; i < numImpressos; i++) {
             totalLivrosDisponiveis += impressos[i].getEstoque();
         }
+
+        totalLivrosDisponiveis += numEletronicos;
 
         if (qtdLivros > totalLivrosDisponiveis) {
             System.out.println("Quantidade de livros solicitada maior que o estoque disponível");
@@ -185,7 +188,7 @@ public class LivrariaVirtual {
             }
 
             if (!livroAdicionado) {
-                System.out.println("Venda não realizada.");
+                System.out.println("Erro ao adicionar o livro. Venda não realizada.");
                 return;
             }
         }
@@ -201,24 +204,24 @@ public class LivrariaVirtual {
         if (numImpressos == 0) {
             System.out.println("\nNenhum livro impresso");
         } else {
-            System.out.print("\nLivros Impressos: \n");
-            System.out.print("\n---------------------\n");
-
+            System.out.print("\n===== Livros Impressos =====\n");
             for (int i = 0; i < numImpressos; i++) {
-                System.out.println((i) + 1 + " ° \n" + impressos[i].toString());
+                System.out.println("Livro " + (i + 1) + ":");
+                System.out.println(impressos[i].toString());
+                System.out.println("-----------------------------\n");
             }
         }
     }
 
     public void listarLivrosEletronicos() {
         if (numEletronicos == 0) {
-            System.out.println("\nNenhum livro eletrônico disponível.");
+            System.out.println("\nNenhum livro eletrônico");
         } else {
-            System.out.println("\nLivros Eletrônicos Disponíveis: \n");
-            System.out.println("---------------------");
-
+            System.out.println("\n===== Livros Eletrônicos =====\n");
             for (int i = 0; i < numEletronicos; i++) {
-                System.out.println((i + 1) + " º \n" + eletronicos[i].toString());
+                System.out.println("Livro " + (i + 1) + ":");
+                System.out.println(eletronicos[i].toString());
+                System.out.println("-----------------------------\n");
             }
         }
     }
@@ -226,31 +229,35 @@ public class LivrariaVirtual {
     private void listarLivros() {
         if (numImpressos == 0 && numEletronicos == 0) {
             System.out.println("\nNenhum Livro Cadastrado");
-        }
+        } else {
+            System.out.println("\n===== Listagem de Livros =====");
+            if (numImpressos > 0) {
+                listarLivrosImpressos();
+            }
 
-        if (numImpressos > 0) {
-            listarLivrosImpressos();
-        }
+            if (numEletronicos > 0) {
+                listarLivrosEletronicos();
+            }
 
-        System.out.println("\n---------------------");
-
-        if (numEletronicos > 0) {
-            listarLivrosEletronicos();
+            System.out.println("\n===== ====== =====\n");
         }
     }
 
     private void listarVendas() {
         if (numVendas == 0) {
-            System.out.println("Nenhuma Venda feita");
+            System.out.println("Nenhuma Venda Realizada!");
         } else {
+            System.out.println("\n===== Lista de Vendas =====\n");
             for (int i = 0; i < numVendas; i++) {
                 Venda venda = vendas[i];
-                System.out.println("\n--------------------------------");
+                System.out.println("--------------------------------");
                 System.out.println("Venda " + (i + 1) + ":");
                 venda.listarLivros();
                 System.out.println("Cliente: " + venda.getCliente());
+                System.out.println("Valor: R$ " + venda.getValor());
                 System.out.println("--------------------------------\n");
             }
+            System.out.println("===== ====== =====\n");
         }
     }
 

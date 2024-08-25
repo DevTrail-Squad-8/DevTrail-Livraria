@@ -27,7 +27,7 @@ public class Impresso extends Livro {
 
     public void atualizarEstoque() {
         if (estoque > 0) {
-            estoque--;
+            estoque-=1;
         } else {
             System.out.println("Estoque vazio");
         }

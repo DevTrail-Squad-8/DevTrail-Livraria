@@ -48,27 +48,28 @@ public class Venda {
 
     public void addLivro(Livro l, int index) {
         if (index >= 0 && index < livros.length && livros[index] == null) {
-            if (l instanceof Impresso impresso) {
-                if (impresso.getEstoque() <= 0) {
-                    System.out.println("Estoque do livro impresso esgotado!");
-                    return;
-                }
-                valor += impresso.getPreco() + impresso.getFrete();
-                impresso.atualizarEstoque();
-            } else {
-                valor += l.getPreco();
-            }
             livros[index] = l;
+            valor += l.getPreco();
+
+            if (l instanceof Impresso) {
+                valor += ((Impresso) l).getFrete();
+            }
         } else {
             System.out.println("Erro");
         }
     }
 
+
     public void listarLivros() {
         System.out.println("Venda n° " + numero);
-        for (Livro livro : livros) {
-            if (livro != null) System.out.println(livro.toString());
+        for (int i = 0; i < livros.length; i++) {
+            if (livros[i] != null) {
+                System.out.println("Livro " + (i + 1) + ":");
+                System.out.println(livros[i].toString());
+                System.out.println("-----------------------------");
+            }
         }
-        System.out.println("Valor total da venda: " + valor);
+        System.out.println("Valor total da venda: R$ " + valor);
     }
+
 }

@@ -206,9 +206,8 @@ public class LivrariaVirtual {
         } else {
             System.out.print("\n===== Livros Impressos =====\n");
             for (int i = 0; i < numImpressos; i++) {
-                System.out.println("Livro " + (i + 1) + ":");
-                System.out.println(impressos[i].toString());
-                System.out.println("-----------------------------\n");
+                System.out.println((i)+ 1 + " - " + impressos[i].toString());
+                System.out.println("-------------------------------");
             }
         }
     }

@@ -6,7 +6,7 @@ public class Venda {
     private float valor;
     private Livro[] livros;
 
-    public Venda(int tamanho, String cliente ) {
+    public Venda(int tamanho, String cliente) {
         this.livros = new Livro[tamanho];
         this.cliente = cliente;
         this.valor = 0;
@@ -50,16 +50,26 @@ public class Venda {
         if (index >= 0 && index < livros.length && livros[index] == null) {
             livros[index] = l;
             valor += l.getPreco();
+
+            if (l instanceof Impresso) {
+                valor += ((Impresso) l).getFrete();
+            }
         } else {
             System.out.println("Erro");
         }
     }
 
+
     public void listarLivros() {
         System.out.println("Venda n° " + numero);
-        for (Livro livro : livros) {
-            if (livro != null) System.out.println(livro.toString());
+        for (int i = 0; i < livros.length; i++) {
+            if (livros[i] != null) {
+                System.out.println("Livro " + (i + 1) + ":");
+                System.out.println(livros[i].toString());
+                System.out.println("-----------------------------");
+            }
         }
-        System.out.println("Valor total da venda: " + valor);
+        System.out.println("Valor total da venda: R$ " + valor);
     }
+
 }

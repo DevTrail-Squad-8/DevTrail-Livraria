@@ -2,14 +2,6 @@
 
 Este projeto consiste em implementar um sistema de gerenciamento de uma livraria virtual, explorando os conceitos de composição, herança e polimorfismo.
 
-```mermaid
-graph TD;
-    A-->B;
-    A-->C;
-    B-->D;
-    C-->D;
-```
-
 ### Funcionalidades
 
 O sistema possui um menu com as seguintes opções:
